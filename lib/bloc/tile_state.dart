@@ -1,8 +1,6 @@
 part of 'tile_bloc.dart';
 
-abstract class TileState extends Equatable {
-  const TileState();
-}
+abstract class TileState extends Equatable {}
 
 class TileWithContent extends TileState {
   final List<Tile> tiles;
