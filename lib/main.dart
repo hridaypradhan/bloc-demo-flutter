@@ -32,50 +32,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
+Row getButtonRow(BuildContext context) => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        FloatingActionButton(
+          child: Icon(
+            Icons.circle,
+            color: Colors.red,
+          ),
+          onPressed: () {
+            BlocProvider.of<TileBloc>(context).add(
+              AddTileEvent(Colors.red),
+            );
+          },
+        ),
+        FloatingActionButton(
+          child: Icon(
+            Icons.circle,
+            color: Colors.green,
+          ),
+          onPressed: () {
+            BlocProvider.of<TileBloc>(context).add(
+              AddTileEvent(Colors.green),
+            );
+          },
+        ),
+        FloatingActionButton(
+          child: Icon(
+            Icons.cancel,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            BlocProvider.of<TileBloc>(context).add(
+              ClearEvent(),
+            );
+          },
+        ),
+      ],
+    );
+
 class InitialLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FloatingActionButton(
-              child: Icon(
-                Icons.circle,
-                color: Colors.red,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  AddTileEvent(Colors.red),
-                );
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.circle,
-                color: Colors.green,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  AddTileEvent(Colors.green),
-                );
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.cancel,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  ClearEvent(),
-                );
-              },
-            ),
-          ],
-        ),
+        getButtonRow(context),
       ],
     );
   }
@@ -100,44 +102,7 @@ class PopulatedLayout extends StatelessWidget {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FloatingActionButton(
-              child: Icon(
-                Icons.circle,
-                color: Colors.red,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  AddTileEvent(Colors.red),
-                );
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.circle,
-                color: Colors.green,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  AddTileEvent(Colors.green),
-                );
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(
-                Icons.cancel,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                BlocProvider.of<TileBloc>(context).add(
-                  ClearEvent(),
-                );
-              },
-            ),
-          ],
-        ),
+        getButtonRow(context),
       ],
     );
   }
